@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script> localStorage.setItem('offer_id', '{offer_id}') </script>
+
+    <link rel="shortcut icon" href="images/med.png" type="image/x-icon">
+    <script src="js/jquery.min.js"></script>
+
+    <title>Bác sĩ tim mạch nổi tiếng Việt Nam chia sẻ:
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link media="all" href="css/index.css" type="text/css" rel="stylesheet">
+    <link media="all" href="css/orderForm.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="css/form.css">
+    <link rel="stylesheet" href="css/header.css">
+    <script src="js/dr-dtime.js"></script>
+
+</head>
+
+<body>
+<header class="header">
+    <div class="header__logo">
+        <a href="">
+            <img src="images/logo.png" alt="">
+        </a>
+    </div>
+</header>
+<nav class="header__nav">
+    <div class="header__nav__container">
+        <a href=""><img src="images/icon-home-star.png" width="23px" height="23px" alt=""></a>
+        <a href="">Kinh tế hội nhập</a>
+        <a href="">Chuyển đổi số </a>
+        <a href="">Chính sách</a>
+        <a href="">Văn hóa xã hội </a>
+        <a href="">Nghiên cứu pháp luật</a>
+        <a href="">Thực tiễn quản lý</a>
+        <a href="">Việt nam điểm đến</a>
+        <div class="header__nav__container__buttons">
+            <a href="">
+                <img src="fonts/dots-9-svgrepo-com.svg" alt="">
+            </a>
+            <a href="">
+                <img src="fonts/search-magnifying-glass-svgrepo-com.svg" alt="">
+            </a>
+        </div>
+    </div>
+</nav>
+
+
+<div id="notify" class="notify">
+    <div class="notify__image">
+        <img id="notify__image" src="images/product.png" alt="">
+    </div>
+    <div class="notify__text">
+        <div id="notify__name" class="notify__name">Đức Minh 034489020xx</div>
+        <div id="notify__text" class="notify__text">Đã đặt thành công 1 sản phẩm</div>
+        <div id="notify__time" class="notify__time">2 phút trước</div>
+    </div>
+</div>
+<style>
+    .notify {
+        z-index: 99;
+        position: fixed;
+        box-shadow: 0 0 10px 0 #bbbbbb;
+        top: -200px;
+        left: 10px;
+        font-size: 15px;
+        background: rgba(255, 255, 255, 0.99);
+        border-radius: 50px;
+        padding: 5px;
+        transition: all 2s;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .notify__image {
+        border-radius: 50%;
+        height: 60px;
+        width: 60px;
+        max-width: 60px;
+        max-height: 60px;
+        padding: 10px;
+        overflow: hidden;
+        box-sizing: border-box;
+    }
+
+    #notify__image {
+        height: 50px;
+        width: 50px;
+    }
+
+    .notify-show {
+        top: 10px;
+    }
+
+    .notify__text {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 2px;
+        padding-right: 5px;
+    }
+
+    .notify__time {
+        font-size: 14px;
+        color: #444444;
+    }
+</style>
+<script>
+    const notifyIntervalTime = 10 // Интервал между уведомлениями
+    const notifyShowTime = 5     // Время показа уведомления
+    const maxProductCount = 3    // Максимальное кол-во купленного товара
+    const notifyMaxBuyTime = 6   // Максимальное время пукупки (купленно Х минут назад)
+
+    const names = [
+        'Tiến Dũng 09353625xx',
+        'Huyền Thanh 091258905xx',
+        'Phan Hải 09638957xx',
+        'Trần Hồng 091258905xx',
+        'Đức Minh 034489020xx',
+        'Duy Hùng 09353625xx',
+        'Mai Hà 09089017xx',
+        'Kiều Anh 034489020xx',
+        'Khánh Linh 09089017xx',
+        'Anh Tú 090357612xx',
+        'Bùi Ngọc 09638957xx',
+        'Thanh Lâm 090357612xx'
+    ]
+
+    const notification = document.getElementById('notify')
+    const notifyImage = document.getElementById('notify__image')
+    const notifyName = document.getElementById('notify__name')
+    const notifyTime = document.getElementById('notify__time')
+
+    function randomIntFromInterval(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min)
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        let name_index = 0
+        setInterval(function () {
+            if (name_index == names.length) {
+                name_index = 0
+            }
+            notifyName.innerHTML = names[name_index]
+            //notifyImage.src = `notify_image/${name_index + 1}.jpg`
+            notifyImage.src = `images/product.png`
+            notifyTime.innerHTML = `Đã đặt thành công ${randomIntFromInterval(1, maxProductCount)} sản phẩm`
+            notifyTime.innerHTML = `${randomIntFromInterval(1, notifyMaxBuyTime)} phút trước`
+
+            notification.classList.add('notify-show')
+            setTimeout(function () {
+                notification.classList.remove('notify-show')
+                name_index++
+            }, notifyShowTime * 1000)
+        }, (notifyIntervalTime * 1000) + (notifyShowTime * 1000))
+    })
+</script>
+
+
+<div id="bodyWrapper">
+    <div id="mainWrapper">
+        <div id="wrapper" style="display:block;">
+            <div id="content">
+                <div class="padWrap">
+                    <div class="article__text js-mediator-article">
+                        <div class="title">
+                            <h1>Tăng huyết áp, tiểu đường, béo phì, đau khớp và nhiều căn bệnh khác không còn là bản án
+                                tử nữa! Một khám phá đột phá tầm cỡ thế giới đã được thực hiện bởi một thiếu niên luôn
+                                ước mơ trở thành bác sĩ. Cậu đã phải bán con bò duy nhất của gia đình để cứu sống người
+                                ông yêu quý, và giờ đây cậu đang cứu sống hàng triệu người!</h1>
+                            <hr>
+                            <h2 style="color: #BE1C1C;">Nguyễn Đình Nhân: “Bạn không cần phải tiêu tốn nhiều tiền vào
+                                thuốc nữa! Tôi biết bí quyết để giúp bạn thoát khỏi những căn bệnh mà chỉ mới đây thôi
+                                còn được coi là không thể chữa khỏi!” Đọc bài viết đầy đủ để biết được bí mật của nhà
+                                phát minh trẻ tuổi.</h2>
+                        </div>
+                        <img src="images/first.jpg" width="100%" style="margin: 0;">
+                        <div class="article_content">
+
+                            <p>Nhân lớn lên trong vòng tay yêu thương của ông nội Bao. Khi Nhân mới 3 tuổi, cha mẹ cậu
+                                đã qua đời trong một vụ tai nạn giao thông khủng khiếp. Người thân duy nhất có thể chăm
+                                sóc cho cậu bé chính là ông Bao. Để có thể nuôi sống đứa cháu nhỏ, Bao thường xuyên phải
+                                làm việc tại các công trường xây dựng 14 giờ mỗi ngày.
+                            </p>
+
+                            <div class="quote">
+                                <p>
+                                    Từ hồi ức của Nhân:
+                                </p>
+
+                                <p>Tôi sẽ không bao giờ quên cách ông nội chăm sóc tôi. Ngoài việc phải làm việc rất
+                                    nhiều,
+                                    ông còn tìm thấy sức mạnh và năng lượng để nuôi dưỡng tôi. Ông luôn kể cho tôi nghe
+                                    những câu chuyện từ thời thơ ấu của mình và nói rằng, dù mục tiêu của tôi trong cuộc
+                                    sống là gì, tôi sẽ luôn đạt được nếu tôi làm việc chăm chỉ và không ngừng cố gắng,
+                                    tôi
+                                    sẽ vượt qua mọi trở ngại.
+                                </p>
+                            </div>
+                            <p>
+                                Một ngày nọ, khi Nhân 15 tuổi, cậu bắt đầu nhận thấy sức khỏe của ông nội bắt đầu suy
+                                giảm
+                                nghiêm trọng. Ban đầu, cậu nhận thấy rằng ông nội mệt mỏi hơn nhiều so với bình thường,
+                                ông
+                                thường xuyên than phiền về những cơn đau đầu và sau đó là những lần chảy máu cam thường
+                                xuyên. Đến một lúc nào đó, Nhân và ông biết rằng cần phải tìm đến bác sĩ để được giúp
+                                đỡ.
+                                Bác sĩ địa phương cho biết đó là tăng huyết áp và dựa trên các triệu chứng, ông nội có
+                                thể
+                                sắp tử vong do đột quỵ tim.
+                            </p>
+
+                            <div class="vazhno">
+
+                                <p>LƯU Ý! TRIỆU CHỨNG CỦA TĂNG HUYẾT ÁP:</p>
+                                <ol>
+                                    <li>Chóng mặt và đau đầu;</li>
+                                    <li>Cảm giác mạch đập ở các vùng khác nhau của cơ thể như phía sau đầu và thái
+                                        dương;
+                                    </li>
+                                    <li>Cảm giác "mờ mịt" trong đầu, giảm thị lực;</li>
+                                    <li>Tiếng ù trong tai và cảm giác nghe thấy nhịp tim;</li>
+                                    <li>Đau thắt ở ngực;</li>
+                                    <li>Mất ngủ và mệt mỏi;</li>
+                                    <li>Chán ăn và buồn nôn;</li>
+                                    <li>Khó thở.</li>
+                                </ol>
+                                <p>NẾU BẠN PHÁT HIỆN NHỮNG TRIỆU CHỨNG NÀY, HÃY LẬP TỨC TÌM KIẾM SỰ GIÚP ĐỠ TỪ BÁC
+                                    SĨ!</p>
+                            </div>
+                            <p>
+                                Nhân không khỏi bàng hoàng. Cậu không thể tin rằng mình có thể mất ông nội yêu quý chỉ
+                                trong chốc lát, người đã làm quá nhiều điều vì cậu. Các bác sĩ đã kê đơn một liệu trình
+                                điều trị đắt tiền, mà theo họ có thể sẽ giúp ích. Nhân có một khoản tiết kiệm nhỏ. Từ
+                                khi cậu lên bảy tuổi, cậu đã làm việc bán thời gian tại một xưởng may và đã tích góp
+                                được một khoản tiền nhỏ. Toàn bộ số tiền đã được dùng để mua thuốc đắt đỏ, nhưng không
+                                có gì hiệu quả. Cậu đã tuyệt vọng và không còn trông chờ vào sự giúp đỡ, cho đến khi một
+                                người bạn của gia đình quá cố nói rằng Nhân nên tìm đến một thầy pháp tên là Trịnh Minh
+                                Tuấn, người sống ở rìa làng. Ông được rất nhiều người ghé thăm, bao gồm cả những người
+                                giàu có và nổi tiếng. Có lẽ đây là cơ hội duy nhất.
+                            </p>
+
+                            <h3 style="color: #BE1C1C;">KHÔNG AI THÍCH ÔNG GIÀ TUẤN, NHƯNG NẾU ĐÂY LÀ CƠ HỘI DUY NHẤT ĐỂ
+                                CHỮA KHỎI BỆNH CAO HUYẾT
+                                ÁP, THÌ KHÔNG CÒN LỰA CHỌN NÀO KHÁC!</h3>
+
+                            <img src="images/money.jpg"
+                                 style="margin: 20px auto; max-height: 500px; text-align: center">
+
+                            <p>Tuấn sống ở ngoại ô làng. Ông có một trang trại riêng với bò và lợn. Phần lớn số gia súc
+                                này được các nông dân địa phương tặng cho ông như là cách thanh toán cho việc chữa bệnh.
+                                Nhiều người đã tìm đến ông. Những người sống gần đó thường nhận thấy những chiếc xe hơi
+                                sang trọng đậu trước nhà ông. Có tin đồn rằng trong thời chiến, ông đã giúp đỡ lính Mỹ,
+                                nhưng không ai nói về điều này một cách công khai vì họ biết: nếu có gì không ổn, những
+                                người bạn quyền lực của ông có thể gây ra rất nhiều rắc rối.</p>
+
+                            <p>Nhân đã phải kiên nhẫn nhiều lần xin gặp Tuấn trước khi ông đồng ý nhận Nhân và ông nội
+                                của cậu vào chữa bệnh. Sau một cuộc kiểm tra nhanh, Tuấn cho biết đúng là bệnh cao huyết
+                                áp, nhưng nguyên nhân là do các mạch máu và cơ quan bị nhiễm bẩn bởi chất béo và
+                                cholesterol có hại.</p>
+
+                            <img src="images/content-2.jpg" width="100%" alt="" style="margin: 0">
+
+                            <p> Để chữa bệnh cao huyết áp và cứu ông nội, cần phải bắt đầu ngay lập
+                                tức việc làm sạch máu! Tuấn nói rằng ông có một loại chất có thể chữa lành hoàn toàn cho
+                                ông nội trong hai tháng, nhưng giá cả thì vượt quá khả năng của Nhân lúc đó. Lúc đó,
+                                Nhân quỳ xuống và cầu
+                                xin người thầy thuốc già thương xót ông và ông nội của mình. Cậu không thể từ bỏ sau tất
+                                cả những gì mà ông nội đã làm cho cậu. Và cuối cùng, ông già Tuấn đã thương xót và đồng
+                                ý hạ giá với điều kiện họ phải bán con bò cuối cùng và Nhân phải làm việc và sống trong
+                                chuồng lợn suốt một năm. Đổi lại, mỗi ngày Tuấn sẽ cho hai giọt chất chữa bệnh và ông
+                                nội sẽ hồi phục. Nhân không còn lựa chọn nào khác, vì cậu yêu ông nội của mình rất
+                                nhiều, và cậu đã đồng ý.</p>
+
+                            <h3 style="color: #BE1C1C;">HAI THÁNG TRỜI NHÂN ĐÃ SỐNG VỚI LỢN ĐỂ CỨU ÔNG NỘI KHỎI BỆNH CAO
+                                HUYẾT ÁP.</h3>
+
+                            <img src="images/pings.jpg"
+                                 style="margin: 20px auto; max-height: 500px; text-align: center">
+
+                            <p>Làm việc ở trang trại giống như một cơn ác mộng thực sự. Nhân làm việc như một nô lệ. Cậu
+                                liên tục phải lao lực để làm kịp mọi việc. Đổi lại cho những nỗ lực đó, sau một tuần làm
+                                việc chăm chỉ, Tuấn đưa cho cậu một lọ nhỏ chứa vài giọt chất lỏng. Ông nói rằng ông nội
+                                của Nhân nên uống một giọt trong khi ăn, hai lần mỗi ngày, và điều này sẽ giúp ích. Nhân
+                                đã đưa thuốc cho ông nội và ông bắt đầu uống để chữa bệnh cao huyết áp.</p>
+
+                            <h3 style="color: #BE1C1C;">CHỈ SAU MỘT TUẦN, ĐIỀU KỲ DIỆU ĐÃ XẢY RA</h3>
+
+                            <p>Cơn đau đầu đã giảm đáng kể, máu mũi không còn chảy, và năng lượng cũng như sức chịu đựng
+                                bắt đầu quay trở lại. Giờ đây, ông nội cảm thấy khỏe hơn rất nhiều. Nhân rất vui mừng
+                                khi nhận ra những nỗ lực của mình không vô ích.</p>
+
+                            <p>Anh tiếp tục làm ruộng và Tuân tiếp tục cho anh thuốc. Một
+                                ngày nọ, cậu bé hỏi người thầy thuốc già tại sao ông không chia sẻ bí mật của mình và
+                                sản xuất thuốc để giúp đỡ nhiều người. Tuấn đáp lại rằng cậu bé không nên can thiệp vào
+                                việc của mình.</p>
+
+                            <h3 style="color: #BE1C1C;">KHI ĐÓ NHÂN QUYẾT ĐỊNH RẰNG, BẰNG MỌI CÁCH, CẬU PHẢI BIẾT ĐƯỢC
+                                BÍ MẬT CHỮA CAO HUYẾT ÁP
+                                CỦA TUẤN</h3>
+
+                            <p>Ban ngày, cậu như thường lệ chăm sóc gia súc, và ban đêm, nếu còn sức, cậu cố gắng theo
+                                dõi những gì Tuấn làm. Có vẻ như Tuấn làm thuốc chữa bệnh của mình vào ban đêm. Một đêm
+                                xuân, khi chờ đến trăng tròn, Nhân rời khỏi nhà và đi vào rừng. Tại đó, cậu đến một bãi
+                                đất trống và tìm thấy một bàn thờ, nơi các nguyên liệu đã được chuẩn bị sẵn. Ông ấy nói
+                                những từ giống như câu thần chú và bắt đầu nhảy múa dưới ánh trăng tròn. Nhân ngạc nhiên
+                                theo dõi ông thầy phù thủy già. Cậu đã từng nghe nói về những chuyện này, nhưng ở
+                                trường, nơi cậu đôi khi đến học, họ đã nói về phù thủy và phép thuật như một thứ cổ hủ
+                                và lạc hậu. Sau đó, Nhân lấy một ít nguyên liệu từ bàn thờ và trở về nhà. Trong căn bếp,
+                                nơi vừa là nơi nấu ăn vừa là nơi chế thuốc phép, cậu bắt đầu làm loại mật hoa kỳ diệu
+                                của mình. Trong khi đi về nhà, cậu đã lấy một nhúm nhỏ của mỗi nguyên liệu từ bàn thờ.
+                                Giờ đây, Nhân đã có đủ những gì cần thiết để tạo ra loại thuốc tiên kỳ diệu. Các nguyên
+                                liệu đó gồm nghệ, nhân sâm khô và lá bạch quả (Ginkgo biloba).</p>
+
+                            <div class="good">
+                                <h3>MÔ TẢ VỀ TỪNG LOẠI NGUYÊN LIỆU</h3>
+
+                                <ol>
+                                    <li>Ginkgo biloba làm giãn các mạch máu và giảm huyết áp. Nó có tác dụng làm thư
+                                        giãn
+                                        toàn bộ hệ thống tuần hoàn.
+                                    </li>
+                                    <li>Chiết xuất sen giúp phục hồi chức năng tim và cung cấp năng lượng cho toàn bộ cơ
+                                        thể.
+                                    </li>
+                                    <li>Nghệ có tác dụng làm tăng cường hệ thần kinh trung ương, từ đó cải thiện tổng
+                                        thể
+                                        sức khỏe của cơ thể.
+                                    </li>
+                                </ol>
+                            </div>
+
+
+                            <p>Tiếp tục quan sát Tuấn, Nhân phát hiện rằng Tuấn thực sự đang nấu thuốc trong bếp. Ông ấy
+                                sử dụng chiết xuất sen làm cơ sở, và trong quá trình nấu, ông nhỏ thứ gì đó từ một lọ có
+                                chữ Mỹ trên đó. Sau 15 phút nấu, Tuấn vui vẻ nói: "Cuối cùng cũng xong rồi! Thật là có
+                                lợi khi chữa bệnh cao huyết áp!" Với những lời này, ông ấy nhấc nồi thuốc ra khỏi bếp và
+                                để nó vào tủ lạnh. Sau đó, ông rời bếp và đi vào phòng ngủ. Nhân theo dõi mọi thứ từ cửa
+                                sổ nhà mình, và sau khi chắc chắn rằng Tuấn đã ngủ, cậu nhẹ nhàng lẻn vào bếp nơi để
+                                thuốc tiên. Cậu đổ một lượng nhỏ từ lọ chứa thuốc ra và ghi nhớ tên lọ có chữ Mỹ trên
+                                đó. Vui mừng, cậu nhanh chóng trở về nhà và ghi lại quy trình chế tạo thuốc vào cuốn sổ
+                                của mình.</p>
+
+                            <h3 style="color: #BE1C1C;">CUỐI CÙNG, BÍ MẬT CỦA VỊ PHÙ THỦY GIÀ ĐÃ BỊ LỘ, VÀ CẢ THẾ GIỚI
+                                ĐÃ BIẾT CÁCH CHỮA CAO
+                                HUYẾT ÁP</h3>
+
+                            <p>Mang theo công thức cùng với lọ thuốc vừa lấy, sáng hôm sau, Nhân trẻ tuổi đi đến Đại học
+                                Y Hà Nội để tìm ai đó thảo luận về những thông tin mà cậu đã thu thập được.</p>
+
+                            <div class="quote">
+                                <p>Trích lời Nhân:</p>
+                                <p>Tôi luôn mong muốn trở thành bác sĩ. Đó là ước mơ lớn nhất của tôi. Chữa bệnh và giúp
+                                    đỡ
+                                    người khác chắc hẳn là điều tuyệt vời nhất trên thế giới. Nhưng tôi chưa bao giờ
+                                    nghĩ
+                                    rằng mình có thể thực hiện được ước mơ đó, vì để học ngành y cần rất nhiều tiền, và
+                                    tôi
+                                    thì không có.</p>
+                            </div>
+
+
+                            <p>Tại đại học, Nhân đã có cơ hội gặp gỡ giáo sư Phạm Sĩ Hải. Cậu ngay lập tức kể cho người
+                                thầy đáng kính nghe câu chuyện kỳ diệu của mình, và vị giáo sư đã lập tức đến phòng thí
+                                nghiệm để tìm hiểu xem công thức là gì và chất bí mật mà Tuấn đã thêm vào thuốc là
+                                gì.</p>
+
+
+                            <img src="images/l_doc-01.jpg" width="100%" style="margin: 0;">
+
+                            <p>Chất đó hóa ra là dimethyl sulfoxide. Đây là một loại dung môi mà quân đội Mỹ đã sử dụng
+                                trong chiến tranh để tăng cường hiệu quả của thuốc giảm đau và các loại thuốc khác mà họ
+                                sản xuất. Nhờ vào chất này, rất nhiều binh sĩ bị thương đã có thể tiếp tục chiến đấu bất
+                                chấp các vết thương của họ.</p>
+
+                            <div class="good">
+                                <p>Trích lời Phạm Sĩ Hải:</p>
+                                <p>Thật là đáng kinh ngạc! Có lẽ Tuấn thực sự đã giúp đỡ các binh sĩ Mỹ, và để trả ơn,
+                                    họ đã
+                                    cung cấp cho ông một lượng lớn chất hiệu quả này! Thật không công bằng khi ông ấy
+                                    quyết
+                                    định sử dụng món quà đó để trục lợi từ những người đồng hương của mình! Chúng ta
+                                    phải
+                                    ngay lập tức tiến hành nghiên cứu chi tiết công thức của ông ấy và phát triển một
+                                    loại
+                                    thuốc có thể chữa bệnh cao huyết áp.</p>
+                            </div>
+
+
+                            <h3 style="color: #BE1C1C;">CHỮA KHỎI BỆNH CAO HUYẾT ÁP VÀ LOẠI THUỐC MỚI
+                                <strong>LIPIXGO</strong></h3>
+
+                            <p>Như đã biết, cao huyết áp hiện nay là một trong những căn bệnh phổ biến nhất, gây tử vong
+                                trên khắp Việt Nam. Rất nhiều người đã qua đời mà không có cơ hội chữa khỏi. Vì vậy,
+                                nghiên cứu của giáo sư Phạm Sĩ Hải về phát hiện của Nhân chắc chắn sẽ là một bước tiến
+                                quan trọng đối với tất cả những ai muốn bảo vệ sức khỏe và sống một cuộc sống lâu dài,
+                                năng động mà không phải chịu đựng bệnh cao huyết áp.</p>
+
+                            <img src="images/handshake.jpg" width="100%" alt="">
+
+                            <p>Loại thuốc mới đã được đặt tên là LipixGo. Ngay lập tức, nó đã được đưa ra thử nghiệm cho
+                                một số người đang bị cao huyết áp nghiêm trọng. Một trong những trường hợp nổi bật nhất
+                                là bà Vũ Thị Trang. Bà không thể đến viện nơi Phạm Sĩ Hải làm việc vì bà quá ốm yếu và
+                                đang nằm trong bệnh viện, nơi các bác sĩ nói rằng bà sắp chết. Con gái của bà, khi biết
+                                về nghiên cứu LipixGo, đã quyết định thử tham gia thí nghiệm cùng bà. Hai lần mỗi ngày
+                                trong bữa ăn, cô ấy cho bà uống một viên thuốc, và chỉ sau hai tháng, giáo sư Phạm Sĩ
+                                Hải nhận được lá thư sau đây:</p>
+
+                            <div class="pg bg_tt" style="">
+
+                                <figure class="Figure" style="text-align: center;">
+                                    <img src="./images/content-4.jpg">
+                                    <span class="Figure-caption">Caption ảnh: Bà Vũ Thị Chang, 75 tuổi – Người đã
+                                            từng suýt chết vì cao huyết áp và các bệnh lý nền khác.
+                                        </span>
+                                </figure>
+
+
+                                <p>“Cảm ơn bác sĩ rất nhiều chính ông đã cứu sống tôi trong lúc nguy kịch nhất!
+                                    Khi con gái bác sĩ, tôi thực sự đã bất tỉnh không biết gì cả. Toàn thân tê
+                                    liệt, tôi chỉ biết nằm một chỗ thoi thóp qua ngày. Tôi bị nhồi máu não khi
+                                    được đưa đến bệnh viện, bác sĩ sau khi kiểm tra qua loa. Họ còn không thèm
+                                    điều trị cho tôi mà chỉ bảo con gái hãy mang tôi về chuẩn bị lo hậu sự.
+                                    Nhưng con gái tôi đã không bỏ cuộc mà kiên quyết gọi điện thoại cho bác sĩ.
+                                    Và sau đó con bé bắt đầu đưa cho tôi uống một loại thuốc mà bác sĩ gửi
+                                    xuống. May mắn thay, chỉ sau 1 tuần bệnh của tôi đã có chuyển biến tốt. Đặc
+                                    biệt, huyết áp ổn định không hề tăng. Tôi đã bắt đầu tỉnh táo lại được trở
+                                    về từ cõi chết. Một tuần trước, tôi được con gái đi kiểm tra tại bệnh viện
+                                    huyện. Khi nhận kết quả thấy các chỉ số đều tốt. Tôi thậm chí còn khỏe mạnh
+                                    so với lứa tuổi của mình. Điều này khiến tôi đã rất ngạc nhiên. Cách đây chỉ
+                                    vài tháng, tôi nghĩ mình đã đặt một chân xuống mồ rồi. Nhưng bây giờ tôi tự
+                                    tin rằng mình chắc chắn sẽ sống. Và thậm chí còn có thể sống khỏe mạnh đến
+                                    100 tuổi. Cảm ơn bác sĩ rất nhiều vì sự giúp đỡ của bạn đã tái sinh tôi thêm
+                                    một lần nữa. " </p>
+                            </div>
+
+                            <p>Trong số một trăm người tham gia nghiên cứu loại thuốc mới, chín mươi tám người đã hoàn
+                                toàn được chữa khỏi. Điều đáng nói là gần một nửa trong số họ đang trong tình trạng nguy
+                                kịch, và các bác sĩ tại bệnh viện đã không còn hy vọng về họ.</p>
+
+                            <p>VIỆC TIẾN HÀNH CÁC NGHIÊN CỨU LOẠI NÀY KHÔNG THỂ TRÁNH KHỎI VIỆC TẠO RA KẺ THÙ, VÀ THUỐC
+                                CHỮA CAO HUYẾT ÁP ĐÃ CÓ NHỮNG KẺ CHỐNG ĐỐI</p>
+
+                            <p>Công chúng đã biết về các nghiên cứu được thực hiện bởi Nhân và Phạm Sĩ Hải, và tin tức
+                                này không qua mắt được Tuấn:</p>
+
+                            <div class="vazhno">
+                                <h3>Trích lời Trịnh Minh Tuấn:</h3>
+
+                                <p>Tôi đã tin tưởng Nhân như con trai ruột của mình. Tôi đã chăm sóc và trông nom cậu ấy
+                                    khi
+                                    cậu làm việc tại trang trại của tôi. Tôi đã chữa khỏi bệnh cho ông nội yêu quý của
+                                    cậu,
+                                    và cậu đã trả ơn tôi bằng sự phản bội! Tôi sẽ không bỏ qua chuyện này!</p>
+                            </div>
+
+
+                            <p>Chẳng bao lâu sau, nhiều vụ kiện đã được đệ trình chống lại loại thuốc do Phạm Sĩ Hải
+                                phát triển. Nguyên đơn là các tập đoàn dược phẩm, những người không muốn sự xuất hiện
+                                của một phương pháp chữa trị cao huyết áp hiệu quả như vậy vì nó làm ảnh hưởng đến lợi
+                                nhuận của họ từ các loại thuốc vô ích mà họ sản xuất để kiếm tiền từ bệnh nhân.</p>
+
+                            <h3 style="color: #BE1C1C;">TRONG KHI ĐÓ, NHỮNG HIỆU ỨNG KỲ DIỆU CỦA LIPIXGO ĐÃ BẮT ĐẦU ĐƯỢC
+                                KỂ LẠI NHƯ NHỮNG HUYỀN
+                                THOẠI</h3>
+                            <p>Một lượng lớn người đã bắt đầu viết thư yêu cầu được đưa họ và người thân của họ vào
+                                chương trình nghiên cứu loại thuốc mới này. Những người có nhu cầu gửi thư đến kín hòm
+                                thư với lời kêu gọi bán ngay loại thuốc này tại các hiệu thuốc. Dưới đây là danh sách
+                                ngắn những lợi ích mà sản phẩm này mang lại cho mọi người:</p>
+
+                            <ol>
+                                <li>Khôi phục trí nhớ.</li>
+                                <li>Cải thiện sự linh hoạt của khớp.</li>
+                                <li>Tái tạo hoàn toàn tim và mạch máu.</li>
+                                <li>Tăng cường ham muốn tình dục cho nam giới ở mọi lứa tuổi.</li>
+                                <li>Khôi phục lại năng lượng đã mất, loại bỏ tình trạng mệt mỏi và kiệt sức.</li>
+                                <li>Tăng cường khả năng tập trung và chú ý.</li>
+                            </ol>
+
+                            <div class="vazhno">
+                                <h3>THÔNG TIN QUAN TRỌNG DÀNH CHO NHỮNG AI MUỐN THỬ LIPIXGO!</h3>
+                                <p>
+                                    Nhằm hưởng ứng phong trào “Thanh lọc máu – Bảo vệ sức khỏe toàn dân”, ban biên tập
+                                    chúng tôi đã
+                                    kêu gọi nhà sản xuất Lipixgo tổ chức chương trình khuyến mại giảm giá 50% trên mỗi
+                                    sản phẩm, từ
+                                    1.180.000 VNĐ <b>chỉ còn 590.000 VNĐ</b>. Chương trình chỉ kéo dài đến <b>
+                                    <script>dtime_nums(-1, true)</script>
+                                </b>.
+                                </p>
+
+                                <p>
+                                    Lưu ý: Do vấn đề khan hiếm nguyên liệu, nhà sản xuất chỉ sản xuất số lượng có hạn và
+                                    phải đợi 6
+                                    tháng nữa mới có đợt sản phẩm tiếp theo. Nếu các bạn thực sự muốn cải thiện sức khỏe
+                                    và kéo dài
+                                    tuổi thọ hãy hành động ngay từ hôm nay!
+                                </p>
+                            </div>
+                            <style>
+                                .vazhno, .quote, .good {
+                                    font-family: sans-serif;
+                                    background-color: rgb(243, 243, 243);
+                                    border-style: solid;
+                                    border-color: rgb(219, 1, 15);
+                                    border-width: 3px;
+                                    border-radius: 5px;
+                                    padding: 25px 15px;
+                                    color: rgb(9, 1, 96);
+                                    font-weight: 600;
+                                    line-height: 1.6;
+                                    margin-bottom: 30px;
+                                }
+
+                                .quote {
+                                    border-color: rgb(9, 1, 96);
+                                }
+
+                                .good {
+                                    border-color: green;
+                                }
+
+                                .vazhno b {
+                                    color: rgb(219, 1, 15);
+                                }
+                            </style>
+
+                            <form id="form" class="form js-intl-validation-main" action="" style="margin-bottom: 20px;">
+                                <div class="form__header">
+                                    <div class="form__header__img">
+                                        <img src="./images/byt-stamp.png" style="max-width: 112px;" width="112px"
+                                             alt="">
+                                    </div>
+                                    <div class="form__header__text">
+                                        <svg style="transform: translateY(5px); width:24px; height:24px;margin:0"
+                                             xmlns="http://www.w3.org/2000/svg"
+                                             xmlns:xlink="http://www.w3.org/1999/xlink"
+                                             version="1.1" x="0px" y="0px" viewBox="0 0 32 32"
+                                             enable-background="new 0 0 32 32"
+                                             xml:space="preserve" preserveAspectRatio="none"
+                                             width="24px" height="24px" class=""
+                                             fill="rgba(17, 123, 42, 1)">
+                                                <path
+                                                        d="M28.245,4.86C20.391,9.676,14.691,15.751,12.131,18.8L5.86,13.887L3.09,16.12l10.836,11.02  c1.865-4.777,7.771-14.113,14.983-20.746L28.245,4.86z">
+                                                </path>
+                                            </svg>
+                                        Chứng nhận hàng chính hãng
+                                    </div>
+                                </div>
+                                <div class="form__product">
+                                    <div class="form__product__title">Điền vào biểu mẫu</div>
+                                    <div class="form__product__subtitle">Nhận ngay Lipixgo với
+                                        giá <span>590.000 VNĐ</span></div>
+                                    <div class="form__product__img">
+                                        <img src="images/product.png" alt=""
+                                             style="max-width: 300px;width: 100%; margin: 25px auto !important">
+                                    </div>
+
+                                    <div class="form__product__counter">
+                                        CÒN TRONG KHO <span id="goodsCount">39</span> gói
+                                    </div>
+                                    <style>
+                                        .form__product__counter {
+                                            width: fit-content;
+                                            color: #BE1C1C;
+                                            margin: auto;
+                                            padding: 5px;
+                                            font-size: 32px;
+                                            font-weight: 600;
+                                            border-radius: 5px;
+                                            margin-bottom: 20px;
+                                            text-transform: uppercase;
+                                        }
+
+                                        .form__product__counter > #goodsCount {
+                                            background: #BE1C1C;
+                                            color: #fff;
+                                            padding: 5px;
+                                            border-radius: 5px;
+                                        }
+                                    </style>
+
+                                    <div class="form__product__oldprice">Giá cũ: 1.180.000 VNĐ
+                                    </div>
+                                    <img id="discoundIcon" src="./images/discound.png" alt="">
+                                    <div class="form__product__newprice">
+
+                                        <span style="color: rgb(3, 128, 3) !important;">590.000 VNĐ</span></div>
+                                    <style>
+                                        .form__product__newprice {
+                                            gap: 10px;
+                                        }
+
+                                        #discoundIcon {
+                                            display: block;
+                                            margin: 10px auto !important;;
+                                            width: 70px;
+                                            animation-name: rotationDiscount;
+                                            animation-duration: 5s;
+                                            animation-iteration-count: infinite;
+                                        }
+
+                                        @keyframes rotationDiscount {
+                                            0% {
+                                                transform: rotate(0deg);
+                                            }
+                                            20% {
+                                                transform: rotate(-40deg);
+                                            }
+                                            40% {
+                                                transform: rotate(1100deg);
+                                            }
+                                            60% {
+                                                transform: rotate(0deg);
+                                            }
+                                        }
+                                    </style>
+                                </div>
+                                <div class="form__inputs">
+                                    <label for="name">
+                                        <img src="./fonts/arrow.svg" style="max-width: 22px; max-height: 22px">Nhập tên
+                                        của
+                                        bạn<img
+                                            src="./fonts/arrow.svg" style="max-width: 22px; max-height: 22px">
+                                    </label>
+                                    <input id="name" class="browser-default" type="text" placeholder="Họ và Tên"
+                                           name="name" required>
+
+                                    <label for="phone">
+                                        <img src="./fonts/arrow.svg" style="max-width: 22px; max-height: 22px">Nhập số
+                                        điện
+                                        thoại liên hệ<img
+                                            src="./fonts/arrow.svg" style="max-width: 22px; max-height: 22px">
+                                    </label>
+                                    <input id="phone" class="browser-default" type="tel" placeholder="Số điện thoại"
+                                           name="phone" style="width: -webkit-fill-available;" required>
+                                    <label for="submit">
+                                        <img src="./fonts/arrow.svg" style="max-width: 22px; max-height: 22px">Nhấn vào
+                                        đây
+                                        để đặt hàng<img
+                                            src="./fonts/arrow.svg" style="max-width: 22px; max-height: 22px">
+                                    </label>
+                                    <input id="submitButton" type="submit"
+                                           value="HOÀN TẤT ĐƠN ĐĂNG KÝ">
+                                    <input name="sub_id1" type="hidden" value="{sub_id1}">
+                                    <style>
+                                        #submitButton {
+                                            margin: 10px auto;
+                                            width: 100%;
+                                            animation-name: submitBounce;
+                                            animation-duration: .5s;
+                                            animation-iteration-count: infinite;
+                                            animation-direction: alternate;
+                                        }
+
+                                        @keyframes submitBounce {
+                                            from {
+                                                transform: scale(1);
+                                            }
+                                            to {
+                                                transform: scale(1.1);
+                                            }
+                                        }
+                                    </style>
+                                </div>
+                                <div class="form__footer">
+                                    <div class="form__footer__first">*Số lượng sản phẩm phụ
+                                        thuộc vào tình trạng và liệu trình điều trị của mỗi cá
+                                        nhân
+                                    </div>
+                                    <div class="form__footer__second">Đơn hàng sẽ được chuyển
+                                        MIỄN PHÍ ĐẾN TẬN NHÀ theo đúng yêu cầu của bạn đồng thời
+                                        đảm bảo tiêu chuẩn phòng chống dịch.
+                                    </div>
+                                </div>
+                            </form>
+
+                            <div class="round_serts">
+                                <div>
+                                    <img src="images/round_sert1.png" alt="">
+                                    <span>Nguồn gốc<br> thiên nhiên</span>
+                                </div>
+                                <div>
+                                    <img src="images/round_sert2.png" alt="">
+                                    <span>Bác sỹ<br> khuyên dùng</span>
+                                </div>
+                                <div>
+                                    <img src="images/round_sert3.png" alt="">
+                                    <span>Chứng nhận<br> an toàn</span>
+                                </div>
+                            </div>
+                            <style>
+                                .round_serts {
+                                    display: flex;
+                                    justify-content: center;
+                                    gap: 5px;
+                                }
+
+                                .round_serts > div {
+
+                                    display: flex;
+                                    flex-direction: column;
+                                    gap: 0px;
+                                    text-align: center;
+                                    font-size: 17px;
+                                }
+
+                                .round_serts > div > img {
+                                    max-width: 140px !important;
+                                    width: 100%;
+                                    margin: 0 !important;
+                                }
+                            </style>
+
+                            <!-- бланк -->
+
+                            <!-- <h2 class="cetner"></h2> -->
+
+                            <!-- <center id="form" style="margin-top:50px;">
+                                <form method="POST" id="order_form" action="post.php">
+
+
+
+
+
+
+                                    <span id="cta"></span>
+
+                                    <div id="order_form_place" style="display:block;">
+                                        <center>
+                                            <img src="./images/med.png" style="max-width:100px;">
+                                            <h2>ĐƠN ĐĂNG KÝ CHÍNH THỨC
+                                            </h2>
+                                            <span style="color:blue;font-size:14px;">Số lượng đã đặt hàng: 29 957
+                                                trong tổng số 30.000 từ ngày <span
+                                                    class="date-0">16.05.2023</span></span>
+                                        </center>
+                                        <div>
+                                            <span style="font-size:16px;">Nhận ưu đãi từ phòng khám tim mạch khi mua
+                                                Lipixgo</span>
+                                        </div>
+                                        <div
+                                            style="margin:15px 10px -5px 10px;border:2px solid #0299ff;padding:10px;">
+                                            <span><b>Để nhận được "Lipixgo" với giá chỉ 590 đồng, hãy điền Tên và
+                                                    số điện thoại liên hệ vào ô bên dưới và bấm vào nút "NHẬN
+                                                    NGAY"</b></span>
+                                        </div>
+                                        <div class="order_form_pole">
+                                            <label>Tên của bạn: </label>
+                                            <input type="text" name="name" required="" placeholder="Tên của bạn">
+                                        </div>
+                                        <div class="order_form_pole">
+                                            <label>Số điện thoại: </label>
+                                            <input type="tel" name="phone" required="" placeholder="Số điện thoại">
+                                            <div id="phone_error" style="color: red; display: none;">Nhập số điện
+                                                thoại chính xác</div>
+                                        </div>
+                                        <div style="margin-bottom:20px;">
+                                            <button type="submit">NHẬN NGAY 590 </button>
+                                        </div>
+                                        <span class="additional">* Lưu ý: Dữ liệu của bạn được gửi trực tiếp đến
+                                            Phòng khám và hoàn toàn được bảo mật, không ai có quyền truy cập vào
+                                            chúng.</span>
+                                    </div>
+
+
+                                </form>
+                            </center> -->
+
+
+                            <!-- бланк -->
+
+
+                        </div>
+                        <div id="comments">
+                            <h2 class="spoint" data="11">Bình luận</h2>
+                            <div class="row-y-item">
+                                <div class="info">
+                                    <div class="coment_ava"><img src="./images/1.jpg"></div>
+                                    <span class="row-y-name">Hà Thị Nga <span
+                                            class="randdate date-6">10.05.2023</span></span>
+                                    <div class="pg">Cảm ơn bác sĩ rất nhiều. Ông đã chia sẻ cho những người cao tuổi
+                                        chúng tôi một sản phẩm thực sự tuyệt vời. Bản thân tôi đã được điều trị bằng
+                                        Lipixgo rất hiệu quả. Trước đây, tôi từng bị tăng huyết áp lên đến ngưỡng
+                                        200 mặc dù đã uống thuốc hạ huyết áp mà không hề giảm. Thế mà uống Lipixgo
+                                        chỉ chưa đầy 2 tuần huyết áp đã ổn định về ngưỡng an toàn. Đau đầu, hoa mắt,
+                                        chóng mặt cũng biến mất. Tôi ngủ ngon hơn. Sức khỏe cải thiện trông còn trẻ
+                                        ra.
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="row-y-item">
+                                <div class="info">
+                                    <div class="coment_ava"><img src="./images/2.jpg"></div>
+                                    <span class="name">Lê Đắc Tâm <span
+                                            class="randdate date-6">10.05.2023</span></span>
+                                    <div class="pg">Tôi vừa đăng ký mua 3 hộp Lipixgo với giá ưu đãi. Cô nhân viên
+                                        tư vấn bảo 3 hôm nữa là nhận được hàng. Tôi thực sự rất mong được sử dụng
+                                        sản phẩm. Năm nay tôi ngoài 60 đã mắc cao huyết áp gần 5 năm nay. Điều trị
+                                        thuốc Tây mãi không khỏi. Nên tôi hy vọng Lipixgo sẽ giúp tôi thoát khỏi
+                                        căn bệnh quái ác này.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row-y-item">
+                                <div class="info">
+                                    <div class="coment_ava"><img src="./images/3.jpg"></div>
+                                    <span class="name">Nguyễn Đăng Phúc <span
+                                            class="randdate date-6">10.05.2023</span></span>
+                                    <div class="pg">Lipixgo CHÍNH LÀ GIẢI PHÁP HIỆU QUẢ NHẤT CHO CÁC BỆNH NHÂN CAO
+                                        HUYẾT ÁP. Bản thân tôi đây đã bị cao huyết áp gần 10 năm nay dùng đủ thứ
+                                        thuốc Tây, Tàu, Nam, Bắc. Cứ ở đâu mách thuốc hay đều đi tìm về dùng. Tốn
+                                        bao nhiêu tiền mà huyết áp cứ ngày một lên cao chứ không hề giảm. Đi khám
+                                        bệnh viện thì bác sĩ chỉ cho dăm ba viên thuốc Tây lỗi thời. Uống vào không
+                                        khỏi được bệnh còn bị tác dụng phụ tùm lum. May mắn năm ngoái tôi được gặp
+                                        giáo sư Phạm Cia Khải. Chính ông đã khuyên tôi sử dụng Lipixgo. Thật tuyệt
+                                        vời. Chỉ sau 5 ngày huyết áp đã về mức bình thường chỉ còn 110mmHg. Uống hết
+                                        1 liệu trình là 6 tháng căn bệnh suy giãn tĩnh mạch chi dưới của tôi cũng
+                                        khỏi hoàn toàn. Cảm ơn Lipixgo.
+                                        <img src="./images/live1.jpg" width="100%"
+                                             style="max-width: 300px; margin: 10px 0 0 0"
+                                             alt="">
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="row-y-item">
+                                <div class="info">
+                                    <div class="coment_ava"><img src="./images/4.jpg"></div>
+                                    <span class="name">Trần Trọng Vinh <span
+                                            class="randdate date-5">11.05.2023</span></span>
+                                    <div class="pg">Tôi cũng dùng Lipixgo được 3 tháng nay. Không chỉ bệnh cao
+                                        huyết áp được cải thiện mà thị lực của tôi được cải thiện rất nhiều. Mắt tôi
+                                        trước đây đeo kính lão mới có thể nhìn rõ. Thế mà từ khi uống Lipixgo mắt
+                                        tôi ngày càng sáng ra không cần kính vẫn xỏ kim và xem tivi hàng ngày. Tôi
+                                        đã giới thiệu Lipixgo cho tất cả những người cao tuổi trong khu sử dụng.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row-y-item">
+                                <div class="info">
+                                    <div class="coment_ava"><img src="./images/5.jpg"></div>
+                                    <span class="name">Lan Anh <span
+                                            class="randdate date-4">12.05.2023</span></span>
+                                    <div class="pg">Chắc cháu là bệnh nhân trẻ tuổi nhất ở đây đã từng được bác Hải
+                                        cứu sống. Năm nay cháu mới 18 tuổi nhưng đã bị cao huyết áp được gần 3 năm
+                                        đi kèm là máu nhiễm mỡ, gan nhiễm mỡ. Bệnh tật khiến cháu sa sút sức khỏe
+                                        yếu rớt như sên. Năm ngoái cháu suýt chết vì nhồi máu não bệnh viện đã trả
+                                        về mà bố mẹ cháu thương con mang đến phòng khám của bác Hải. Khi đến cháu đã
+                                        mất ý thức rồi nhưng bác Hải rất nhanh chóng cho cháu uống ngay 2 viên
+                                        Lipixgo chưa đầy 2 tiếng sau đầu óc đã tỉnh táo. Đến chiều bác sĩ cho cháu
+                                        về nhà dặn uống đều đặn mỗi ngày chỉ cần uống 2-4 viên là tình trạng sẽ cải
+                                        thiện. Và đúng như vậy, cháu uống được 2 tháng là huyết áp đã ổn định. Tình
+                                        trạng mỡ máu và gan nhiễm mỡ đã biến mất. Đặc biệt, cân nặng của cháu cũng
+                                        giảm nhiều từ 87kg đã xuống chỉ còn 57kg sau nửa năm duy trì uống Lipixgo.
+                                        <img src="./images/live7.jpg" width="100%"
+                                             style="max-width: 300px; margin: 10px 0 0 0"
+                                             alt="">
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="row-y-item">
+                                <div class="info">
+                                    <div class="coment_ava"><img src="./images/6.jpg"></div>
+                                    <span class="name">Hoàng Đức <span
+                                            class="randdate date-4">12.05.2023</span></span>
+                                    <div class="pg">Liệu có phải lừa đảo không? Thuốc gì mà lại bán trôi nổi thế
+                                        này?
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row-y-item">
+                                <div class="info">
+                                    <div class="coment_ava"><img src="./images/7.jpg"></div>
+                                    <span class="name">Trần Văn Bằng <span
+                                            class="randdate date-3">13.05.2023</span></span>
+                                    <div class="pg">Ông chả biết cái gì cả! Đã đọc kỹ bài viết chưa mà nói thế. Do
+                                        nền y tế Việt Nam thối nát không cho sản phẩm được bán ngoài thị trường nên
+                                        mới phải bán online như thế.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row-y-item">
+                                <div class="info">
+                                    <div class="coment_ava"><img src="./images/8.jpg"></div>
+                                    <span class="name">Ngọc Hoa <span
+                                            class="randdate date-2">14.05.2023</span></span>
+                                    <div class="pg">Đúng rùi! Cái bọn bán thuốc thì chỉ nghĩ đến lợi nhuận. Chứ
+                                        chúng nó bao giờ quan tâm đến sức khỏe, tính mạng của dân đâu. Nên nó không
+                                        bán Lipixgo đấy. Bọn chó chết!
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row-y-item">
+                                <div class="info">
+                                    <div class="coment_ava"><img src="./images/9.jpg"></div>
+                                    <span class="name">Phương Anh <span
+                                            class="randdate date-2">14.05.2023</span></span>
+                                    <div class="pg">Mình cũng dùng Lipixgo này rồi. Hiệu quả thật đấy. Mình thì
+                                        không bị cao huyết áp nhưng lại hay bị đau đầu với chóng mặt. Đọc thấy
+                                        nguyên nhân do mạch máu bị ách tắc nên mình cũng mua Lipixgo để dùng. Mới
+                                        được 2 ngày mà đã hết sạch đau đầu, chóng mặt. Ngủ ngon giấc hơn nên ngày
+                                        càng trẻ đẹp ra.
+                                        <img src="./images/live5.jpg" width="100%"
+                                             style="max-width: 300px; margin: 10px 0 0 0"
+                                             alt="">
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="row-y-item">
+                                <div class="info">
+                                    <div class="coment_ava"><img src="./images/10.jpg"></div>
+                                    <span class="name">Lê Minh Hoàng <span
+                                            class="randdate date-2">14.05.2023</span></span>
+                                    <div class="pg">Tôi là một bác sĩ làm trong ngành Y hơn 10 năm nay. Tôi phải
+                                        khẳng định rằng Lipixgo là sản phẩm tốt nhất cho bệnh nhân cao huyết áp
+                                        hiện nay ở Việt Nam. Sản phẩm này được chiết xuất từ thảo dược thiên nhiên
+                                        an toàn và lành tính. Ngoài hiệu quả ổn định huyết áp, Lipixgo còn giúp
+                                        giảm mỡ máu, ngăn chặn xơ vữa động mạch và chống đột quỵ rất tốt. Tôi đều
+                                        khuyên bệnh nhân của mình sử dụng Lipixgo thay vì dùng thuốc Tây kéo dài.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row-y-item">
+                                <div class="info">
+                                    <div class="coment_ava"><img src="./images/11.jpg"></div>
+                                    <span class="name">Anh Quân <span
+                                            class="randdate date-2">14.05.2023</span></span>
+                                    <div class="pg">Không chỉ riêng Lipixgo đâu. Tôi biết rất nhiều loại thuốc
+                                        hiện đang bị cấm bán tại Việt Nam. Tất cả chỉ vì các sản phẩm này quá hiệu
+                                        quả. Người bệnh chỉ cần dùng 1 liệu trình là khỏi hoàn toàn. Trong khi đó
+                                        nếu sử dụng các loại thuốc thông dụng kia thì người bệnh phải uống triền
+                                        miên ngày tháng mới đỡ. Đó chính là mỏ vàng của đám dược sĩ. Vì thế chúng nó
+                                        tìm mọi cách để ngăn những loại thuốc như Lipixgo không được xuất hiện
+                                        trên thị trường.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row-y-item">
+                                <div class="info">
+                                    <div class="coment_ava"><img src="./images/12.jpg"></div>
+                                    <span class="name">Lặng Thầm <span
+                                            class="randdate date-2">14.05.2023</span></span>
+                                    <div class="pg">Ở cái xứ thiên đường này bác sĩ thì thờ ơ vì bệnh nhân không có
+                                        tiền. Dược sĩ thì kiếm chác trên xương máu của người dân. Các bác cứ phải
+                                        sang Mẽo mới thấy người ta chăm sóc cho người dân tốt như thế nào. Cứ đến
+                                        bệnh viện là được chăm sóc tận răng. Thuốc thì toàn thuốc tốt không à.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row-y-item">
+                                <div class="info">
+                                    <div class="coment_ava"><img src="./images/13.jpg"></div>
+                                    <span class="name">Hòa Dung <span
+                                            class="randdate date-1">15.05.2023</span></span>
+                                    <div class="pg">May quá bây giờ người dân lại có thể mua Lipixgo tại Việt Nam
+                                        dễ dàng đến thế. Mình đang ở nước ngoài mỗi tháng phải gửi về cho mẹ ở nhà
+                                        rất vất vả. Mình vừa đặt hàng giao tận nhà cho mẹ ở Hà Nam.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row-y-item">
+                                <div class="info">
+                                    <div class="coment_ava"><img src="./images/14.jpg"></div>
+                                    <span class="name">Long Hưng <span
+                                            class="randdate date-0">16.05.2023</span></span>
+                                    <div class="pg">Tôi ở trong Nam muốn mua Lipixgo sau khi điền số điện thoại
+                                        vào bản đăng ký thì mấy hôm nhận được?
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row-y-item">
+                                <div class="info">
+                                    <div class="coment_ava"><img src="./images/15.jpg"></div>
+                                    <span class="name">Hà Anh <span class="randdate date-0">16.05.2023</span></span>
+                                    <div class="pg">Bạn ở đâu miền Nam? Mình ở tận Cà Mau mà đặt hàng khoảng 4 ngày
+                                        là nhận được rồi nhé!
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="middle">
+                                <div align="center">
+                                    <a class="button" data-toggle="scroll"
+                                       href="">ĐẶT MUA
+                                        Lipixgo CHÍNH HÃNG TẠI VIỆT NAM </a>
+                                </div>
+                            </div>
+
+                            <div style="text-align: center; border-top: solid 1px #eee; padding: 10px 20px; margin-bottom: 10px">
+                                <div style="font-size: 18px; margin-bottom: 5px">
+                                    Bản Quyền © 2024 Copyrightindex.com
+                                </div>
+                                <div style="opacity: 0.95; font-size: 16px">
+                                    Tất cả quyền được bảo lưu. Nội dung này có thể không được sao chép,
+                                    phân phối hoặc truyền dưới bất kỳ hình thức nào hoặc bằng bất kỳ
+                                    phương tiện nào, bao gồm sao chép, ghi âm hoặc các phương tiện điện
+                                    tử hoặc cơ khí khác mà không có sự cho phép bằng văn bản của nhà xuất bản.
+                                    Ngoại trừ các tài liệu tham khảo ngắn gọn trong các đánh giá quan trọng
+                                    và các mục đích phi thương mại khác được luật bản quyền cho phép.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="clear:both;"></div>
+            <br>
+        </div>
+    </div>
+    <!--<hr>-->
+    <!--<div id="footer" style="display:block;">-->
+    <!--    <a data-toggle="scroll" href=""><img-->
+    <!--            src="./images/logo_med.jpg" width="100%" style="max-width: 350px;"></a>-->
+    <!--    <p>Việc sử dụng các tài liệu trong trang web đã được chấp thuận nhưng cần phải để lại đường dẫn đến trang-->
+    <!--        web gốc.</p>-->
+    <!--    <p>Mã nhúng block và các tài nguyên khác được đăng trên trang web của chúng tôi có thể được sử dụng mà không-->
+    <!--        cần xin phép.</p>-->
+    <!--</div>-->
+</div>
+
+
+<footer class="footer">
+    <div class="footer__container">
+        <span>LIÊN HỆ VỚI CHÚNG TÔI:</span>
+        <div class="footer__container__links">
+            <a href="">Liên hệ tòa soạn</a>
+            <a href="">Hotline: 0315894513</a>
+            <a href="">Giới thiệu tòa soạn</a>
+        </div>
+    </div>
+</footer>
+
+
+<script src="./js/modal.js"></script>
+
+<script>
+    function startTimer() {
+        console.log('startTimer')
+        let goodsCount = document.getElementById("goodsCount")
+        let goodsCountTop = window.pageYOffset + goodsCount.getBoundingClientRect().top
+        let startGoodsCount = 39
+        let interval = setInterval(function () {
+            if (startGoodsCount > 3) {
+                startGoodsCount--
+            } else {
+                clearInterval(interval)
+            }
+            goodsCount.innerHTML = `${startGoodsCount}`
+        }, 7500)
+    }
+
+    function checkTimerTop() {
+        let goodsCount = document.getElementById("goodsCount")
+        let goodsCountTop = window.pageYOffset + goodsCount.getBoundingClientRect().top
+        if (window.pageYOffset + 500 > goodsCountTop) {
+            document.removeEventListener("scroll", checkTimerTop)
+            startTimer()
+        }
+    }
+
+    document.addEventListener("scroll", checkTimerTop)
+</script>
+
+<script>
+    const target = 'form' // Здесь указыватся id блока, к которому будет скролить ссылки с пустым href
+
+    const aTags = [...document.getElementsByTagName('a'), ...document.getElementsByClassName('linkToForm')]
+    for (let i = 0; i < aTags.length; i++) {
+        let aTag = aTags[i]
+        let href = aTag.getAttribute('href')
+
+        aTag.addEventListener('click', function (event) {
+            event.preventDefault()
+            document.getElementById(target).scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        })
+
+
+    }
+</script>
+
+<!-- Маска для номера -->
+<link rel="stylesheet" href="css/intlTelInput.min.css" />
+<style>
+    div.iti,
+    div.iti input {
+        width: 100%;
+        height: 100%;
+    }
+    div.iti ul.iti__country-list {
+        max-height: 80vh;
+    }
+    
+    .iti__flag-container {
+        display: none;
+    }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.js"
+        integrity="sha512-GKEK9SOXk4P4vIduy3P9BwkLvOHoFuGBtGnmVIF5StxOE0ZavtF5Q06+fmUJq2ePMVm/E4us1ISOAoPc2ZMYVQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    const country = "VN" // здесь указываем страну для валидации
+    
+    const phoneInputs = document.querySelectorAll('input[name="phone"]')
+    for (let i = 0; i < phoneInputs.length; i++) {
+        let phoneInput = phoneInputs[i]
+        let inp = intlTelInput(phoneInput, {
+            initialCountry: country,
+            autoFormat: true,
+            nationalMode: false,
+            allowDropdown: false,
+            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js"
+        });
+        
+        // Если поле пустое, добавляем при клике код гео
+        phoneInput.addEventListener('focus', function (event) {
+            // if (phoneInput.value.length === 0) {
+            //   countryData = inp.getSelectedCountryData()
+            //   dialCode = countryData.dialCode
+            //   phoneInput.value = "+" + dialCode
+            // }
+        })
+        
+        phoneInput.addEventListener('input', function (event) {
+            // phoneInput.value = phoneInput.value.replace(/[^0-9+]/g, '')
+        })
+    }
+</script>
+<!-- end -->
+
+<!-- Скрипт для сабов и антитреш -->
+<script type="text/javascript">
+    // Отключение кнопок отправки формы
+    function disableSubmitBtns() {
+        const submitBtnList = document.querySelectorAll('[type=submit]')
+        for (let i = 0; i < submitBtnList.length; i++) {
+            let submitBtn = submitBtnList[i]
+            submitBtn.disabled = true
+            submitBtn.style.opacity = "0.7"
+            submitBtn.style.pointerEvents = 'none'
+        }
+    }
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    var pixel = urlParams.has('pixel') ? urlParams.get('pixel') : (urlParams.has('px') ? urlParams.get('px') : false);
+    
+    // Новые сабы
+    const pixelInput = document.createElement('input')
+    pixelInput.type = 'hidden';
+    pixelInput.name = 'pixel';
+    pixelInput.value = pixel;
+    
+    const subidInput = document.createElement('input')
+    subidInput.type = 'hidden';
+    subidInput.name = 'subid';
+    subidInput.value = '{subid}'
+    
+    // Добавляем новые сабы в каждую форму + запись в куки при отправке формы
+    const forms_list = document.getElementsByTagName('form')
+    for (let i = 0; i < forms_list.length; i++) {
+        let form = forms_list[i]
+        console.log(form)
+        form.action = "order.php"
+        form.method = "POST"
+        form.appendChild(subidInput.cloneNode(true))
+        form.appendChild(pixelInput.cloneNode(true))
+        form.addEventListener('submit', function (event) {
+            let phoneInp = form.querySelector('input[name="phone"]')
+            if (phoneInp.value.length < 9) {
+                event.preventDefault()
+                return false;
+            }
+            document.cookie = "lead=lead;max-age=2678400"
+            disableSubmitBtns()
+        })
+    }
+    
+    // Проверка записи в куки
+    const c = document.cookie.match(/lead=(.+?)(;|$)/)
+    if (c) {
+        if (c[1] == 'lead') {
+            //disableSubmitBtns()
+        }
+    }
+</script>
+<!-- end -->
+
+<?php
+$pixelCode = isset($_GET['pixel']) ? $_GET['pixel'] : (isset($_GET['px']) ? $_GET['px'] : false);
+if ($pixelCode) : ?>
+<!--  Facebook  -->
+<script>
+    !function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+            n.callMethod ?
+              n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = '2.0';
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s)
+    }(window, document, 'script', '//connect.facebook.net/en_US/fbevents.js');
+    fbq('init', <?php echo $pixelCode; ?>);
+    fbq('track', 'PageView', {}, {eventID: '{subid}'});
+</script>
+<noscript><img height="1" width="1" src="//www.facebook.com/tr?id={px}&ev=PageView&noscript=1&eid={subid}"/>
+</noscript>
+<?php endif; ?>
+<!--  Facebook  -->
+
+<script src="js/yback.js"
+        data-backlink=""
+        data-showcaselink=""
+        data-traceenabled="false"
+        data-redirect="true"
+        data-isoff="false">
+</script>
+
+</body>
+
+</html>
